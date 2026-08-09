@@ -1,0 +1,164 @@
+html {
+    box-sizing: border-box;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: "Overpass", sans-serif;
+    font-weight: 400;
+}
+
+
+#main-container {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(216, 12%, 8%);
+}
+
+#rating-state {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: min(90%, 410px);
+    aspect-ratio: 1;
+    padding: 2rem;
+    background-color: hsl(213, 19%, 18%);
+    border-radius: 20px;
+    gap: 1rem;
+}
+
+.star-container {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: hsl(213, 16%, 24%);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    margin: 0;
+    color: white;
+    font-size: 1.75rem;
+}
+
+#rating-state>p {
+    margin: 0;
+    width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: hsl(217, 12%, 63%);
+}
+
+#rating {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+}
+
+input {
+    display: none;
+}
+
+label {
+    width: 55px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: hsl(213, 16%, 24%);
+    cursor: pointer;
+    color: hsl(217, 12%, 63%);
+    font-weight: 600;
+}
+
+input:hover+label {
+    background: hsl(25, 97%, 53%);
+    color: hsl(216, 12%, 8%);
+}
+
+input:checked+label {
+    background: white;
+    color: hsl(216, 12%, 8%);
+}
+
+
+#submit-button {
+    padding: 12px 24px;
+    border-radius: 9999px;
+    background-color: hsl(25, 97%, 53%);
+    color: hsl(216, 12%, 8%);
+    height: 45px;
+    width: 100%;
+    font-size: 0.8rem;
+    font-weight: 750;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    letter-spacing: 1.5px;
+}
+
+#submit-button:active {
+    background-color: white;
+    color: hsl(216, 12%, 8%);
+}
+
+#thank-you-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: min(90%, 410px);
+    aspect-ratio: 1;
+    padding: 2rem;
+    background-color: hsl(213, 19%, 18%);
+    border-radius: 20px;
+}
+
+#thank-you-state > p {
+    text-align: center;
+    font-size: 0.95rem;
+    color: hsl(217, 12%, 63%);
+}
+
+#rating-text {
+    padding: 6px 12px;
+    border: 1px solid;
+    border-radius: 9999px;
+    background-color: hsl(213, 16%, 24%);
+    color: hsl(25, 97%, 53%) !important;
+    font-weight: 380;
+    width: 60%;
+    border: none;
+    margin: 8% 0;
+}
+
+#thanks-paragraph {
+    line-height: 1.5;
+}
+
+
+@media(min-width:375px) {}
+
+@media(min-width:1440px) {}
