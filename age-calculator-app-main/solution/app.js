@@ -83,8 +83,6 @@ function validateInputs(day, month, year) {
     isValid = false;
   }
 
-  // Only check the exact calendar date once the basic ranges pass,
-  // so we catch things like 31 April or 29 Feb on a non-leap year.
   if (isValid) {
     const testDate = new Date(year, month - 1, day);
     const isRealDate =
