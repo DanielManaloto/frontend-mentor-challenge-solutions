@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+
+    <title>Frontend Mentor | Weather app</title>
+  </head>
+  <body>
+    <nav>
+      <img src="./assets/images/logo.svg" alt="Weather now logo" />
+      <div class="dropdown">
+        <button id="unit-btn" class="dropbtn">Units</button>
+
+        <div class="dropdown-cntr">
+          <button class="switch-units">Switch to Imperial</button>
+
+          <p class="change-unit-text">Temperature</p>
+          <hr />
+          <button class="change-unit-btn" id="switchToCelcius">Celsius</button>
+          <button class="change-unit-btn" id="switchToFahrenheit">Fahrenheit</button>
+
+          <p class="change-unit-text">Wind Speed</p>
+          <hr />
+          <button class="change-unit-btn" id="switchToKMH">km/h</button>
+          <button class="change-unit-btn" id="switchToMPH">mph</button>
+
+          <p class="change-unit-text">Precipitation</p>
+          <hr />
+          <button class="change-unit-btn" id="switchToMM">Millimeters (mm)</button>
+          <button class="change-unit-btn" id="switchToIN">Inches (in)</button>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <h1 id="headline">How's the sky looking today?</h1>
+      <div class="search-container">
+        <input
+          type="text"
+          name="search-input"
+          id="search-bar"
+          placeholder="Search for a place..."
+        />
+
+        <div class="search-results-container">
+          <ul class="search-result-list"></ul>
+        </div>
+        <button class="search-btn">Search</button>
+      </div>
+    </header>
+    <h2 class="search-result-error"> No search results found! </h2>
+    <main>
+      
+      <div class="today-forecast-cntr">
+        <div class="loading-display">
+            <img
+              id="loading"
+              src="./assets/images/icon-loading.svg"
+              alt="sunny"
+            />
+            <p>     Loading . . . .</p>
+        </div>
+        <div class="today-forecast-content">
+          <div class="location-date">
+            <h2 id="location"></h2>
+            <p id="date"></p>
+            <p id="curr-weather-text"></p>
+          </div>
+          <div class="temp-weather">
+            <img
+              id="curr-weather"
+              src="./assets/images/icon-sunny.webp"
+              alt="sunny"
+            />
+            <p id="curr-temp"></p>
+          </div>
+        </div>
+
+        <div class="metrics">
+          <div id="feels-like">
+            Feels Like <span id="feels-like-val">---</span>
+          </div>
+          <div id="humidity">Humidity <span id="humidity-val">---</span></div>
+          <div id="wind">Wind <span id="wind-val">---</span></div>
+          <div id="precipitation">
+            Precipitation <span id="precipitation-val">---</span>
+          </div>
+        </div>
+      </div>
+      <div class="daily-forecast-cntr">
+        <h4 id="daily-forecast-text">Daily forecast</h4>
+        <div class="days-cntr">
+
+          <div id="day0" class="weekday-cntr">
+          </div>
+
+          <div id="day1" class="weekday-cntr">
+          </div>
+
+          <div id="day2" class="weekday-cntr">
+          </div>
+
+          <div id="day3" class="weekday-cntr">
+          </div>
+
+          <div id="day4" class="weekday-cntr">
+          </div>
+
+          <div id="day5" class="weekday-cntr">
+          </div>
+
+          <div id="day6" class="weekday-cntr">
+          </div>
+          
+        </div>
+      </div>
+
+      <div class="hourly-forecast-cntr">
+        <div class="top-cntr">
+          <h3>Hourly forecast</h3>
+
+          <div class="dropdown day-dropdown">
+            <button id="day-change-btn" class="dropbtn">-</button>
+            <div class="dropdown-cntr day-dropdown-cntr">
+              <button class="day-btn" id="monday-btn"> Monday </button>
+              <button class="day-btn" id="tuesday-btn"> Tuesday </button>
+              <button class="day-btn" id="wednesday-btn"> Wednesday </button>
+              <button class="day-btn" id="thursday-btn"> Thursday </button>
+              <button class="day-btn" id="friday-btn"> Friday </button>
+              <button class="day-btn" id="saturday-btn"> Saturday </button>
+              <button class="day-btn" id="sunday-btn"> Sunday </button>
+            </div>
+          </div>
+        </div>
+
+        <ul class="hourly-forecast-list">
+          <li id="hour1" class="hourly-forecast-item">---</li>
+          <li id="hour2" class="hourly-forecast-item">---</li>
+          <li id="hour3" class="hourly-forecast-item">---</li>
+          <li id="hour4" class="hourly-forecast-item">---</li>
+          <li id="hour5" class="hourly-forecast-item">---</li>
+          <li id="hour6" class="hourly-forecast-item">---</li>
+          <li id="hour7" class="hourly-forecast-item">---</li>
+          <li id="hour8" class="hourly-forecast-item">---</li>
+        </ul>
+      </div>
+    </main>
+    <div class="api-error">
+        <img src="./assets/images/icon-error.svg" alt="api error">
+        <h1>Something went wrong</h1>
+        <p> We couldn't connect to the server (API Error). Please try again in few momentsr</p>
+        <button id="retry-btn"> Retry </button>
+    </div>
+    <footer class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+      Coded by <a href="#">Daniel M.</a>.
+    </footer>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>
