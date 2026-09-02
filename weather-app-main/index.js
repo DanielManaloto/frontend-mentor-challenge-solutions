@@ -183,6 +183,9 @@ const debouncedSuggest = debounce(async (query) => {
 
 searchBar.addEventListener("input", (event) => {
     debouncedSuggest(event.target.value.trim());
+
+    const now = new Date();
+    dayChangeBtn.textContent = now.toLocaleDateString("en-US", { weekday: "long" });
 });
 
 searchResultList.addEventListener("click", (event) => {
@@ -223,9 +226,6 @@ async function selectSearchResult(latitude, longitude, label) {
 searchBtn.addEventListener("click", () => {
     const city = searchBar.value.trim();
     if (!city) return;
-
-    const now = new Date();
-    dayChangeBtn.textContent = now.toLocaleDateString("en-US", { weekday: "long" });
 
     retryAction = () => getWeather(city);
     getWeather(city);
