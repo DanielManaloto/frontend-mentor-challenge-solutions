@@ -1,7 +1,7 @@
 html {
     box-sizing: border-box;
     font-family: 'Hanken Grotesk', sans-serif;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 *,
@@ -18,30 +18,30 @@ html {
 body {
     font-family: "Overpass", sans-serif;
     font-weight: 400;
-    background-color: hsl(216, 12%, 8%);
 }
 
 
 #main-container {
     margin: 0;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: hsl(216, 12%, 8%);
+    padding: 2rem 0;
+    overflow-y: auto;
 }
 
 #rating-state {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: min(90%, 380px);
-    aspect-ratio: 1;
-    padding: 1.8rem;
+    width: min(90%, 410px);
+    padding: 2rem;
     background-color: hsl(213, 19%, 18%);
     border-radius: 20px;
-    gap: 0.98rem;
+    gap: 1rem;
 }
 
 .star-container {
@@ -81,7 +81,7 @@ input {
 }
 
 label {
-    width: 50px;
+    width: 55px;
     aspect-ratio: 1;
     border-radius: 50%;
     display: inline-flex;
@@ -129,12 +129,12 @@ input:checked+label {
     display: none;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
-    width: min(90%, 380px);
-    aspect-ratio: 1;
-    padding: 1.8rem;
+    justify-content: center;
+    width: min(90%, 410px);
+    padding: 2rem;
     background-color: hsl(213, 19%, 18%);
     border-radius: 20px;
+    gap: 1.25rem;
 }
 
 #thank-you-state > p {
@@ -159,24 +159,13 @@ input:checked+label {
     line-height: 1.5;
 }
 
-footer {
-    color: white;
-    justify-self: center;
-}
 
+@media(min-width:375px) {}
 
-@media(max-width:375px) {
-
-    #rating-state {
-        width: 90%;
-        height: auto;
-        padding: 1.5rem;
-        gap: 0.8rem;
-    
-    }
-
-    label {
-        width: 16%;
+@media(min-width:600px) {
+    #rating-state,
+    #thank-you-state {
+        aspect-ratio: 1;
     }
 }
 
