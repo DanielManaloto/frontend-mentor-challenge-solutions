@@ -77,6 +77,11 @@ body {
   font-weight: 500;
 }
 
+h2:hover {
+  cursor: pointer;
+  color: hsl(47, 88%, 63%);
+}
+
 #category {
   width: fit-content;
 
@@ -91,9 +96,14 @@ body {
 }
 
 h2 {
-  color: hsl(47, 88%, 63%);
+  color: hsl(0, 0%, 7%);
   font-weight: 700;
   line-height: 1.2;
+}
+
+h2:hover {
+  cursor: pointer;
+  color: hsl(47, 88%, 63%);
 }
 
 #description {
