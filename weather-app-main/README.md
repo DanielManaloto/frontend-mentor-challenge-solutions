@@ -222,3 +222,7 @@ In creating this solution, AI was used mainly for debugging and exploring possib
 ## Author
 
 - GitHub - [DanielManaloto](https://github.com/DanielManaloto)
+
+## Acknowledgments
+
+I would like to thank Frontend Mentor for providing the challenge and the opportunity to practice and improve my frontend development skills.
