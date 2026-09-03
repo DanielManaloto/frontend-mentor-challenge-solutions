@@ -1,0 +1,179 @@
+html {
+    box-sizing: border-box;
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    font-family: "Red Hat Display", sans-serif;
+    font-weight: 300;
+
+    background-image: url("./images/pattern-background-desktop.svg");
+    background-repeat: no-repeat;
+    background-color: hsl(225, 100%, 94%);
+}
+
+main {
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container {
+    width: min(90%, 360px);
+    min-height: 520px;
+    height: auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: white;
+    box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.40);
+    border-radius: 20px;
+}
+
+.main-container>img {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+}
+
+.main-content {
+    padding: 30px 40px 10px 40px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-content>* {
+    margin-bottom: 18px;
+
+}
+
+.main-content>h3 {
+    font-size: 22px;
+    font-weight: 900;
+    color: hsl(223, 47%, 23%);
+}
+
+.main-content>p {
+    padding: 0 10px;
+
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    color: hsl(223, 47%, 23%);
+}
+
+.payment-plan-container {
+    width: 100%;
+    min-height: 90px;
+    padding: 20px;
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: hsl(225, 100%, 98%);
+    border-radius: 20px;
+}
+
+.payment-plan-container>img {
+    height: 100%;
+    margin-right: 10px;
+}
+
+#payment-plan-content>h5 {
+    font-weight: 900;
+    color: hsl(223, 47%, 23%);
+    margin-bottom: 5px;
+}
+
+#payment-plan-content>p {
+    font-size: 14px;
+    font-weight: 300;
+    color: hsl(223, 47%, 23%);
+}
+
+#change-btn {
+    border: none;
+    background-color: transparent;
+    margin-left: auto;
+
+    color: hsl(245, 75%, 52%);
+    font-size: 12px;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+#change-btn:active {
+    text-decoration: none;
+}
+
+#change-btn:hover {
+    text-decoration: none;
+}
+
+
+#proceed-btn {
+    width: 100%;
+    height: 40px;
+
+    background-color: hsl(245, 75%, 52%);
+    border-radius: 10px;
+
+    font-weight: 600;
+    color: hsl(225, 100%, 98%);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.40);
+    border: none;
+
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#cancel-btn {
+    width: 100%;
+    height: 40px;
+
+    background-color: hsl(225, 100%, 98%);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.20);
+
+    font-weight: 600;
+    color: hsl(223, 47%, 23%);
+
+    padding: 10px;
+    border: none;
+
+}
+
+button:active {
+    filter: brightness(1.5);
+    
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+@media(max-width:375px) {
+    .main-content {
+        padding: 10px;
+    }
+}
