@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | Todo app</title>
+
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body
+    class="min-h-screen flex flex-col items-center gap-5 font-sans text-lg bg-page-light dark:bg-page-dark max-[375px]:bg-[url('./images/bg-mobile-light.jpg')] dark:max[375px]]:bg-[url('./images/bg-mobile-dark.jpg')] bg-[url('./images/bg-desktop-light.jpg')] dark:bg-[url('./images/bg-desktop-dark.jpg')] bg-no-repeat bg-top transition-colors duration-300"
+  >
+    <header class="w-[min(90%,600px)] flex items-center justify-between max-[375px]:mt-12 max-[375px]:mb-0 mt-18 mb-8">
+      <h2
+        class="text-black dark:text-white max-[375px]:text-2xl text-4xl font-bold tracking-[0.3em]"
+      >
+        TODO
+      </h2>
+      <button
+        type="button"
+        id="theme-btn"
+        aria-label="Toggle dark mode"
+        class="data-hs-theme-switch w-6 h-6 bg-no-repeat bg-contain bg-center border-none cursor-pointer bg-[url('./images/icon-moon.svg')] dark:bg-[url('./images/icon-sun.svg')]"
+      ></button>
+    </header>
+
+    <main class="w-[min(90%,600px)] flex flex-col gap-5 text-lg">
+      <div
+        class="input-cntr flex flex-row items-center gap-5 w-full p-5 rounded-lg bg-surface-light dark:bg-surface-dark transition-colors duration-300"
+      >
+        <input
+          type="checkbox"
+          class="todo-checkbox w-6 h-6 shrink-0 rounded-full border-2 border-border-light dark:border-checkbox-border-dark bg-transparent appearance-none cursor-pointer"
+        />
+        <input
+          type="text"
+          name="add_todo"
+          id="add-todo"
+          placeholder="Add Todo"
+          class="bg-transparent border-none outline-none w-full text-base text-ink-light dark:text-ink-dark placeholder:text-muted"
+        />
+      </div>
+
+      <div
+        class="todo-cntr w-full rounded-lg overflow-hidden font-bold bg-surface-light dark:bg-surface-dark text-ink-light dark:text-ink-dark transition-colors duration-300"
+      >
+        <ul class="todo-list">
+          <li class="todo-item">
+            <input type="checkbox" class="todo-checkbox" />
+            <span class="todo-text">Buy groceries</span>
+          </li>
+        </ul>
+
+        <div
+          class="todo-components flex justify-between items-center p-5 font-bold text-sm text-muted"
+        >
+          <p class="whitespace-nowrap">5 items left</p>
+          <button
+            id="clear-completed-btn"
+            class="border-none bg-transparent whitespace-nowrap font-bold cursor-pointer text-muted hover:text-ink-light dark:hover:text-ink-dark transition-colors"
+          >
+            Clear Completed
+          </button>
+        </div>
+      </div>
+
+      <div
+        class="todo-list-buttons w-full flex justify-center gap-4 max-sm:p-5 rounded-lg font-bold bg-surface-light dark:bg-surface-dark text-muted transition-colors duration-300"
+      >
+        <button id="show-all-btn" class="generic-btn">All</button>
+        <button id="show-active-btn" class="generic-btn">Active</button>
+        <button id="show-completed-btn" class="generic-btn">Completed</button>
+      </div>
+
+      <p class="text-center text-sm font-bold text-muted">
+        Drag and drop to reorder list
+      </p>
+    </main>
+
+    <footer
+      class="attribution w-[min(90%,600px)] text-center text-xs mt-6 mb-6 text-muted"
+    >
+      Challenge by
+      <a
+        href="https://www.frontendmentor.io?ref=challenge"
+        class="text-brand-blue hover:underline"
+        >Frontend Mentor</a
+      >. Coded by
+      <a href="#" class="text-brand-blue hover:underline">Your Name Here</a>.
+    </footer>
+    <script type="module" src="./index.js"></script>
+  </body>
+</html>

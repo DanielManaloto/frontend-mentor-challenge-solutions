@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Josefin Sans", sans-serif;
+
+  --color-brand-blue: hsl(220, 98%, 61%);        
+  --color-check-from: hsl(192, 100%, 67%);       
+  --color-check-to: hsl(280, 87%, 65%);         
+
+  --color-muted: hsl(236, 9%, 61%);             
+
+  --color-page-light: hsl(236, 33%, 92%);        
+  --color-surface-light: hsl(0, 0%, 98%);        
+  --color-border-light: hsl(233, 11%, 84%);      
+  --color-ink-light: hsl(235, 19%, 35%);         
+
+  --color-page-dark: hsl(235, 21%, 11%);       
+  --color-surface-dark: hsl(235, 24%, 19%);     
+  --color-ink-dark: hsl(234, 39%, 85%);         
+  --color-border-dark: hsl(233, 14%, 35%);      
+  --color-surface-hover-dark: hsl(237, 14%, 26%); 
+  --color-checkbox-border-dark: hsl(235, 16%, 43%); 
+}
+
+@layer components {
+    .generic-btn {
+        @apply  border-none bg-transparent font-bold cursor-pointer text-inherit min-[600px]:text-sm
+             hover:text-ink-light dark:hover:text-ink-dark transition-colors
+    }
+    
+    .todo-checkbox {
+        @apply w-6 h-6 shrink-0 rounded-full border-2 border-border-light dark:border-checkbox-border-dark bg-transparent appearance-none cursor-pointer
+    }
+
+    .todo-item {
+        @apply list-none flex items-center gap-5 p-5 border-b-2 border-border-light dark:border-border-dark dark:hover:bg-surface-hover-dark transition-colors
+    }
+}
