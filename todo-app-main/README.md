@@ -1,22 +1,28 @@
-# Frontend Mentor - Todo app
+# Frontend Mentor - Todo app solution
 
-![Design preview for the Todo app coding challenge](preview.jpg)
+This is a solution to the [Todo app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/todo-app-Su1_KokOW). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+  - [AI Collaboration](#ai-collaboration)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
 
-**To do this challenge, you need a good understanding of HTML, CSS and JavaScript.**
+## Overview
 
-## The challenge
+### The challenge
 
-Your challenge is to build out this todo app and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
 - See hover states for all interactive elements on the page
@@ -28,85 +34,118 @@ Your users should be able to:
 - Toggle light and dark mode
 - **Bonus**: Drag and drop to reorder items on the list
 
-### Want some support on the challenge? 
+### Screenshot
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+![](./screenshot/desktop-design-light.png)
+<p style="text-align: center;">Desktop Design Light.</p>
 
-## Where to find everything
+![](./screenshot/desktop-design-dark.png)
+<p style="text-align: center;">Desktop Design Dark.</p>
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design.
+![](./screenshot/mobile-design-light.png)
+<p style="text-align: center;">Desktop Design Light.</p>
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
+![](./screenshot/mobile-design-dark.png)
+<p style="text-align: center;">Desktop Design dark.</p>
 
-If you would like the Figma design file to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+### Links
 
-You will find all the required assets in the `/images` folder. The assets are already optimized.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+## My process
 
-## Using AI coding assistants
+### Built with
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+- Semantic HTML5 markup
+- CSS custom properties
+- Tailwind CSS
+- Flexbox
+- Mobile-first workflow
+- VS Code
+- Node.js
+- Vite
+- React
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+### What I learned
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+Building this project deepened my understanding of managing state in React beyond a single `useState` call, and gave me a first real implementation of drag and drop.
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+The core of the app is one `todos` array in state, with handler functions that update it immutably:
 
-## Building your project
+```jsx
+const [todos, setTodos] = useState([...]);
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+function toggleTodo(id) {
+  setTodos((prev) =>
+    prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+  );
+}
+```
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+I also learned to sync state with the DOM and `localStorage` using `useEffect`, so the dark mode preference persists across reloads and falls back to the OS-level setting on first visit:
 
-## Deploying your project
+```jsx
+const [isDark, setIsDark] = useState(() => {
+  const stored = localStorage.getItem("theme");
+  if (stored) return stored === "dark";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches;
+});
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+useEffect(() => {
+  document.documentElement.classList.toggle("dark", isDark);
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+}, [isDark]);
+```
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+A similar `matchMedia` + event listener pattern let me detect the desktop breakpoint in JavaScript rather than only in CSS, which was necessary because the filter buttons move to a different spot in the layout on desktop instead of just changing style.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+The bonus feature — drag and drop to reorder the list — was the biggest learning curve. I used the browser's native HTML5 Drag and Drop API rather than a library, wiring up four events on each list item:
 
-## Create a custom `README.md`
+```jsx
+<li
+  draggable
+  onDragStart={(e) => handleDragStart(e, todo.id)}
+  onDragOver={(e) => handleDragOver(e, todo.id)}
+  onDrop={(e) => handleDrop(e, todo.id)}
+  onDragEnd={handleDragEnd}
+>
+```
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+The trickiest part was realizing reordering has to operate on each todo's `id`, not its position in the rendered list — since the visible list shrinks when the Active or Completed filter is applied, using array indices would move the wrong items:
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+```jsx
+function handleDrop(e, targetId) {
+  e.preventDefault();
+  setTodos((prev) => {
+    const updated = [...prev];
+    const fromIndex = updated.findIndex((t) => t.id === draggedId);
+    const toIndex = updated.findIndex((t) => t.id === targetId);
+    const [moved] = updated.splice(fromIndex, 1);
+    updated.splice(toIndex, 0, moved);
+    return updated;
+  });
+}
+```
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+I also learned that `e.preventDefault()` inside `onDragOver` is required, since the browser blocks a drop by default, and that calling `dataTransfer.setData()` in `onDragStart` is needed for the drag to initiate consistently across browsers like Firefox.
 
-## Submitting your solution
+### Continued development
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
+For now, I don't have any specific plans for continued development. I want to keep practicing by working on more projects and gradually improve my HTML and CSS skills as I gain more experience.
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+### Useful resources
 
-## Sharing your solution
+- [MDN: HTML Drag and Drop API](https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API) - Explains the full drag event lifecycle (`dragstart`, `dragover`, `drop`, `dragend`) and why `preventDefault()` is required on `dragover` for a drop to be allowed.
+- [React docs: useState](https://react.dev/reference/react/useState) and [useEffect](https://react.dev/reference/react/useEffect) - Reference for the functional update form of `setState` and for syncing state with external systems like `localStorage` and `matchMedia`.
 
-There are multiple places you can share your solution:
+### AI Collaboration
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community).
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+In creating this solution, AI was used mainly for debugging and for working through how to implement the drag-and-drop reordering feature, since the native HTML5 Drag and Drop API is less commonly documented than third-party alternatives. I mainly used the Claude Sonnet 5 model available on the website. AI-generated code was used as minimally as possible so that I could continue learning and developing my skills in frontend programming.
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
+## Author
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+- GitHub - [DanielManaloto](https://github.com/DanielManaloto)
 
-## Got feedback for us?
+## Acknowledgments
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
-
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
-
-**Have fun building!** 🚀
+I would like to thank Frontend Mentor for providing the challenge and the opportunity to practice and improve my frontend development skills.
