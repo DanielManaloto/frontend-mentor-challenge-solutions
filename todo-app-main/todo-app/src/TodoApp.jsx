@@ -11,6 +11,9 @@ export default function TodoApp() {
   const [inputValue, setInputValue] = useState("");
   const [filter, setFilter] = useState("all");
 
+  const [draggedId, setDraggedId] = useState(null);
+  const [dragOverId, setDragOverId] = useState(null);
+
   const [isDark, setIsDark] = useState(() => {
     const stored = localStorage.getItem("theme");
     if (stored) return stored === "dark";
@@ -53,6 +56,43 @@ export default function TodoApp() {
 
   function clearCompleted() {
     setTodos((prev) => prev.filter((t) => !t.completed));
+  }
+
+  function handleDragStart(e, id) {
+    setDraggedId(id);
+    e.dataTransfer.effectAllowed = "move";
+    e.dataTransfer.setData("text/plain", String(id));
+  }
+
+  function handleDragOver(e, id) {
+    e.preventDefault(); 
+    e.dataTransfer.dropEffect = "move";
+    if (id !== draggedId) setDragOverId(id);
+  }
+
+  function handleDrop(e, targetId) {
+    e.preventDefault();
+    if (draggedId === null || draggedId === targetId) {
+      setDraggedId(null);
+      setDragOverId(null);
+      return;
+    }
+    setTodos((prev) => {
+      const updated = [...prev];
+      const fromIndex = updated.findIndex((t) => t.id === draggedId);
+      const toIndex = updated.findIndex((t) => t.id === targetId);
+      if (fromIndex === -1 || toIndex === -1) return prev;
+      const [moved] = updated.splice(fromIndex, 1);
+      updated.splice(toIndex, 0, moved);
+      return updated;
+    });
+    setDraggedId(null);
+    setDragOverId(null);
+  }
+
+  function handleDragEnd() {
+    setDraggedId(null);
+    setDragOverId(null);
   }
 
   const visibleTodos = todos.filter((t) => {
@@ -124,7 +164,18 @@ export default function TodoApp() {
             {visibleTodos.map((todo) => (
               <li
                 key={todo.id}
-                className="todo-item group flex items-center"
+                draggable
+                onDragStart={(e) => handleDragStart(e, todo.id)}
+                onDragOver={(e) => handleDragOver(e, todo.id)}
+                onDrop={(e) => handleDrop(e, todo.id)}
+                onDragEnd={handleDragEnd}
+                className={`todo-item group flex items-center cursor-grab active:cursor-grabbing transition-[opacity,box-shadow] ${
+                  draggedId === todo.id ? "opacity-40" : ""
+                } ${
+                  dragOverId === todo.id && draggedId !== todo.id
+                    ? "shadow-[inset_0_2px_0_0_var(--color-brand-blue)]"
+                    : ""
+                }`}
               >
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input
