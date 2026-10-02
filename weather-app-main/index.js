@@ -1,5 +1,15 @@
 import { fetchWeatherApi } from "openmeteo";
 
+import sunny from "./assets/images/icon-sunny.webp";
+import drizzle from "./assets/images/icon-drizzle.webp";
+import fog from "./assets/images/icon-fog.webp";
+import overcast from "./assets/images/icon-overcast.webp";
+import partly from "./assets/images/icon-partly-cloudy.webp";
+import rain from "./assets/images/icon-rain.webp";
+import snow from "./assets/images/icon-snow.webp";
+import storm from "./assets/images/icon-storm.webp";
+
+
 const main = document.querySelector("main");
 const header = document.querySelector("header");
 const apiError = document.querySelector(".api-error");
@@ -235,15 +245,16 @@ retryBtn.addEventListener("click", () => {
     if (retryAction) retryAction();
 });
 
+
 const WEATHER_ICONS = {
-    clearSky: "/assets/images/icon-sunny.webp",
-    drizzle: "/assets/images/icon-drizzle.webp",
-    fog: "/assets/images/icon-fog.webp",
-    overcast: "/assets/images/icon-overcast.webp",
-    partly: "/assets/images/icon-partly-cloudy.webp",
-    rain: "/assets/images/icon-rain.webp",
-    snow: "/assets/images/icon-snow.webp",
-    storm: "/assets/images/icon-storm.webp"
+    clearSky: sunny,
+    drizzle,
+    fog,
+    overcast,
+    partly,
+    rain,
+    snow,
+    storm
 };
 
 function getWeatherIcon(weatherCode) {
