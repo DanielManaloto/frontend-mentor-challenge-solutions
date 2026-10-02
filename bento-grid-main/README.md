@@ -37,7 +37,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Vercel](https://frontend-mentor-challenge-solutions-five.vercel.app/bento-grid-main/)
+- Live Site URL: [GitHub](https://github.com/DanielManaloto/frontend-mentor-challenge-solutions/tree/main/bento-grid-main)
 
 ## My process
 

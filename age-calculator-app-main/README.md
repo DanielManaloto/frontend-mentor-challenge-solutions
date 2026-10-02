@@ -1,115 +1,198 @@
-# Frontend Mentor - Age calculator app
+# Frontend Mentor - Age calculator app solution
 
-![Design preview for the Age calculator app coding challenge](preview.jpg)
+This is a solution to the [Age calculator app challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/age-calculator-app-dF9DFFpj-Q). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
 
-## Welcome! 👋
+## Table of contents
 
-Thanks for checking out this front-end coding challenge.
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+  - [AI Collaboration](#ai-collaboration)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-[Frontend Mentor](https://www.frontendmentor.io) challenges help you improve your coding skills by building realistic projects.
+## Overview
 
-**To do this challenge, you need a decent understanding of HTML, CSS and JavaScript.**
+### The challenge
 
-## The challenge
-
-Your challenge is to build out this age calculator app and get it looking as close to the design as possible.
-
-You can use any tools you like to help you complete the challenge. So if you've got something you'd like to practice, feel free to give it a go.
-
-Your users should be able to:
+Users should be able to:
 
 - View an age in years, months, and days after submitting a valid date through the form
 - Receive validation errors if:
   - Any field is empty when the form is submitted
   - The day number is not between 1-31
   - The month number is not between 1-12
-  - The date is in the future
+  - The year is in the future
   - The date is invalid e.g. 31/04/1991 (there are 30 days in April)
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
 - **Bonus**: See the age numbers animate to their final number when the form is submitted
 
-### Want some support on the challenge? 
+### Screenshot
 
-[Join our community](https://www.frontendmentor.io/community) and ask questions in the **#help** channel.
+**Desktop design**
 
-## Where to find everything
+![](./screenshot/desktop-design.png)
 
-Your task is to build out the project to the designs inside the `/design` folder. You will find both a mobile and a desktop version of the design.
+**Desktop design - complete**
 
-The designs are in JPG static format. Using JPGs will mean that you'll need to use your best judgment for styles such as `font-size`, `padding` and `margin`.
+![](./screenshot/complete-desktop-design.png)
 
-If you would like the Figma design file to inspect the design in more detail, you can [subscribe as a PRO member](https://www.frontendmentor.io/pro).
+**Mobile design**
 
-All the required assets for this project are in the `/assets` folder. The images are already exported for the correct screen size and optimized.
+![](./screenshot/mobile-design.png)
 
-We also include variable and static font files for the required fonts for this project. You can choose to either link to Google Fonts or use the local font files to host the fonts yourself. Note that we've removed the static font files for the font weights that aren't needed for this project.
+**Complete state (result after submitting a valid date)**
 
-There is also a `style-guide.md` file containing the information you'll need, such as color palette and fonts.
+![](./screenshot/complete-state.png)
 
-## Using AI coding assistants
+**Error state - empty fields**
 
-We've included two files to help you if you're using AI coding assistants (like Claude, GitHub Copilot, Cursor, etc.) while working on this challenge:
+![](./screenshot/desktop-error-empty.png)
 
-- `AGENTS.md` - Contains detailed instructions for AI assistants on how to help you with this challenge. It's tailored to this challenge's difficulty level, so the AI will provide guidance appropriate to your learning stage—offering more support for beginner challenges and encouraging more independence on advanced ones.
-- `CLAUDE.md` - A pointer file that directs Claude-based tools to the AGENTS.md instructions.
+**Error state - invalid date**
 
-**How to use them:** You don't need to do anything! These files are automatically detected by most AI coding tools. The AI will read them and adjust its behavior to be a better learning partner—guiding you toward solutions rather than just giving you the answers.
+![](./screenshot/desktop-error-invalid.png)
 
-**Note:** These files are designed to help you *learn*, not to do the work for you. The AI is instructed to ask questions, give hints, and explain concepts rather than writing complete solutions.
+### Links
 
-## Building your project
+- Solution URL: [Vercel](https://frontend-mentor-challenge-solutions-five.vercel.app/age-calculator-app-main/)
+- Live Site URL: [GitHub](https://github.com/DanielManaloto/frontend-mentor-challenge-solutions/tree/main/age-calculator-app-main)
 
-Feel free to use any workflow that you feel comfortable with. Below is a suggested process, but do not feel like you need to follow these steps:
+## My process
 
-1. Initialize your project as a public repository on [GitHub](https://github.com/). Creating a repo will make it easier to share your code with the community if you need help. If you're not sure how to do this, [have a read-through of this Try Git resource](https://try.github.io/).
-2. Configure your repository to publish your code to a web address. This will also be useful if you need some help during a challenge as you can share the URL for your project with your repo URL. There are a number of ways to do this, and we provide some recommendations below.
-3. Look through the designs to start planning out how you'll tackle the project. This step is crucial to help you think ahead for CSS classes to create reusable styles.
-4. Before adding any styles, structure your content with HTML. Writing your HTML first can help focus your attention on creating well-structured content.
-5. Write out the base styles for your project, including general content styles, such as `font-family` and `font-size`.
-6. Start adding styles to the top of the page and work down. Only move on to the next section once you're happy you've completed the area you're working on.
+### Built with
 
-## Deploying your project
+- Semantic HTML5 markup
+- CSS
+- Flexbox
+- Vanilla JavaScript (no frameworks or libraries)
 
-As mentioned above, there are many ways to host your project for free. Our recommended hosts are:
+### What I learned
 
-- [GitHub Pages](https://pages.github.com/)
-- [Vercel](https://vercel.com/)
-- [Netlify](https://www.netlify.com/)
+This project was my chance to practice plain JavaScript with the DOM. No frameworks, just HTML, CSS (Flexbox) and one `app.js` file. Here are the main things I picked up.
 
-You can host your site using one of these solutions or any of our other trusted providers. [Read more about our recommended and trusted hosts](https://www.frontendmentor.io/guides/hosting-your-solution).
+**1. Grabbing elements once and reusing them**
 
-## Create a custom `README.md`
+I select every input, error message and result element at the top of the file with `getElementById`, so the rest of the code can use them without searching the DOM again.
 
-We strongly recommend overwriting this `README.md` with a custom one. We've provided a template inside the [`README-template.md`](./README-template.md) file in this starter code.
+```js
+const dayInput = document.getElementById("day");
+const dayError = document.getElementById("day-error");
+const yearResult = document.getElementById("year-result");
+```
 
-The template provides a guide for what to add. A custom `README` will help you explain your project and reflect on your learnings. Please feel free to edit our template as much as you like.
+**2. Stopping the form from reloading the page**
 
-Once you've added your information to the template, delete this file and rename the `README-template.md` file to `README.md`. That will make it show up as your repository's README file.
+A submit button inside a form refreshes the page by default. `e.preventDefault()` stops that so I can run my own function instead.
 
-## Submitting your solution
+```js
+submitBtn.addEventListener("click", function (e) {
+  e.preventDefault();
+  calculateAge();
+});
+```
 
-Submit your solution on the platform for the rest of the community to see. Follow our ["Complete guide to submitting solutions"](https://www.frontendmentor.io/guides/how-to-submit-solutions) for tips on how to do this.
+**3. Turning input text into numbers**
 
-Remember, if you're looking for feedback on your solution, be sure to ask questions when submitting it. The more specific and detailed you are with your questions, the higher the chance you'll get valuable feedback from the community.
+Input values are always strings. `parseInt(value, 10)` converts them to base-10 numbers so I can compare them properly. I also use `.trim()` on the raw value to check for empty fields.
 
-## Sharing your solution
+```js
+const day = parseInt(dayInput.value, 10);
 
-There are multiple places you can share your solution:
+if (!dayInput.value.trim()) {
+  showError(dayInput, dayError, "This field is required");
+}
+```
 
-1. Share your solution page in the **#finished-projects** channel of the [community](https://www.frontendmentor.io/community).
-2. Share on [X (formerly Twitter)](https://x.com/frontendmentor) and mention **@frontendmentor**, including the repo and live URLs in your post. We'd love to take a look at what you've built and help share it around.
-3. Share your solution on [LinkedIn](https://www.linkedin.com/company/frontend-mentor/).
-4. Blog about your experience building your project. Writing about your workflow, technical choices, and talking through your code is a brilliant way to reinforce what you've learned. Great platforms to write on are [dev.to](https://dev.to/), [Hashnode](https://hashnode.com/), and [CodeNewbie](https://community.codenewbie.org/).
+**4. Checking for a real date (the rollover trick)**
 
-We provide templates to help you share your solution once you've submitted it on the platform. Please do edit them and include specific questions when you're looking for feedback.
+This was the trickiest part. JavaScript's `Date` doesn't complain about `31/04/1991`. It quietly rolls over to 1 May. So to catch invalid dates, I build the date and then check that the year, month and day still match what the user typed.
 
-The more specific you are with your questions the more likely it is that another member of the community will give you feedback.
+```js
+const testDate = new Date(year, month - 1, day);
+const isRealDate =
+  testDate.getFullYear() === year &&
+  testDate.getMonth() === month - 1 &&
+  testDate.getDate() === day;
+```
 
-## Got feedback for us?
+I also learned that months in `Date` are zero-based (January is `0`), which is why there's a `month - 1` everywhere.
 
-We love receiving feedback! We're always looking to improve our challenges and our platform. So if you have anything you'd like to mention, please email hi[at]frontendmentor[dot]io.
+**5. Calculating age with "borrowing"**
 
-This challenge is completely free. Please share it with anyone who will find it useful for practice.
+Subtracting the dates gives me raw differences, but they can be negative. It works like subtraction on paper: if the days are negative, I borrow from the months, and if the months are negative, I borrow from the years. The order matters: days first, then months.
 
-**Have fun building!** 🚀
+```js
+if (days < 0) {
+  months--;
+  const daysInPrevMonth = new Date(
+    today.getFullYear(),
+    today.getMonth(),
+    0
+  ).getDate();
+  days += daysInPrevMonth;
+}
+
+if (months < 0) {
+  years--;
+  months += 12;
+}
+```
+
+Using day `0` of a month gives the last day of the previous month, which is a neat way to find how many days that month had.
+
+**6. Keeping the code organized with small functions**
+
+Splitting the logic into functions that each do one job made it much easier to read and debug:
+
+- `calculateAge()` runs the whole flow
+- `validateInputs()` checks the values and returns `true` or `false`
+- `showError()` adds the error styles and message
+- `clearErrors()` resets everything before each new submit
+
+**7. Toggling styles with `classList`**
+
+Instead of changing styles directly in JavaScript, I add and remove CSS classes (`error-input` and `show`) and let the CSS handle how it looks. I also looped over arrays of elements with `forEach` to avoid repeating myself.
+
+```js
+function showError(input, errorEl, message) {
+  input.classList.add("error-input");
+  errorEl.textContent = message;
+  errorEl.classList.add("show");
+}
+
+function clearErrors() {
+  [dayInput, monthInput, yearInput].forEach((input) =>
+    input.classList.remove("error-input")
+  );
+}
+```
+
+### Continued development
+
+For now, I don't have any specific plans for continued development. I want to keep practicing by working on more projects and gradually improve my HTML and CSS skills as I gain more experience.
+
+### Useful resources
+
+- [MDN - Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) - Helped me understand how months are zero-based and how dates roll over.
+- [MDN - Event.preventDefault()](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault) - Explained why my form kept refreshing the page.
+- [MDN - Element.classList](https://developer.mozilla.org/en-US/docs/Web/API/Element/classList) - Useful for adding and removing the error styles.
+
+### AI Collaboration
+
+In creating this solution, AI was used mainly for debugging and exploring possible solutions to various errors and bugs encountered throughout development. I mainly used the Claude Sonnet 5 model available on the website. AI-generated code was used as minimally as possible so that I could continue learning and developing my skills in frontend programming.
+
+## Author
+
+- GitHub - [DanielManaloto](https://github.com/DanielManaloto)
+
+## Acknowledgments
+
+I would like to thank Frontend Mentor for providing the challenge and the opportunity to practice and improve my frontend development skills.

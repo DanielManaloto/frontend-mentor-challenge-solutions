@@ -54,7 +54,8 @@ Users should be able to:
 
 ### Links
 
-* Solution URL: [Add solution URL here]
+- Solution URL: [Vercel](https://frontend-mentor-challenge-solutions-five.vercel.app/interactive-rating-component-main/)
+- Live Site URL: [GitHub](https://github.com/DanielManaloto/frontend-mentor-challenge-solutions/tree/main/interactive-rating-component-main)
 
 ## My process
 
