@@ -43,7 +43,7 @@
             checked:after:m-auto
             checked:after:w-4
             checked:after:h-4
-            checked:after:bg-[url('../images/icon-check.svg')]
+            checked:after:bg-[url('/images/icon-check.svg')]
             checked:after:bg-contain
             checked:after:bg-center
             checked:after:bg-no-repeat;

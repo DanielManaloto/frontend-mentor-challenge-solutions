@@ -65,7 +65,7 @@ export default function TodoApp() {
   }
 
   function handleDragOver(e, id) {
-    e.preventDefault(); 
+    e.preventDefault();
     e.dataTransfer.dropEffect = "move";
     if (id !== draggedId) setDragOverId(id);
   }
@@ -140,7 +140,7 @@ export default function TodoApp() {
           id="theme-btn"
           aria-label="Toggle dark mode"
           onClick={() => setIsDark((d) => !d)}
-          className="data-hs-theme-switch w-6 h-6 bg-no-repeat bg-contain bg-center border-none cursor-pointer bg-[url('./images/icon-moon.svg')] dark:bg-[url('./images/icon-sun.svg')]"
+          className="data-hs-theme-switch w-6 h-6 bg-no-repeat bg-contain bg-center border-none cursor-pointer bg-[url('/images/icon-moon.svg')] dark:bg-[url('/images/icon-sun.svg')]"
         ></button>
       </header>
 
@@ -203,7 +203,7 @@ export default function TodoApp() {
                     bg-center
                     border-none
                     cursor-pointer
-                    bg-[url('./images/icon-cross.svg')]
+                    bg-[url('/images/icon-cross.svg')]
                     opacity-0
                     group-hover:opacity-100
                     transition-opacity
