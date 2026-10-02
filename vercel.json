@@ -1,0 +1,39 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "services": {
+    "weather-app": {
+      "root": "weather-app-main",
+      "framework": "vite"
+    },
+    "todo-app": {
+      "root": "todo-app-main/todo-app",
+      "framework": "vite"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/weather-app-main",
+      "destination": {
+        "service": "weather-app"
+      }
+    },
+    {
+      "source": "/weather-app-main/(.*)",
+      "destination": {
+        "service": "weather-app"
+      }
+    },
+    {
+      "source": "/todo-app",
+      "destination": {
+        "service": "todo-app"
+      }
+    },
+    {
+      "source": "/todo-app/(.*)",
+      "destination": {
+        "service": "todo-app"
+      }
+    }
+  ]
+}
