@@ -236,14 +236,14 @@ retryBtn.addEventListener("click", () => {
 });
 
 const WEATHER_ICONS = {
-    clearSky: "./assets/images/icon-sunny.webp",
-    drizzle: "./assets/images/icon-drizzle.webp",
-    fog: "./assets/images/icon-fog.webp",
-    overcast: "./assets/images/icon-overcast.webp",
-    partly: "./assets/images/icon-partly-cloudy.webp",
-    rain: "./assets/images/icon-rain.webp",
-    snow: "./assets/images/icon-snow.webp",
-    storm: "./assets/images/icon-storm.webp"
+    clearSky: "/assets/images/icon-sunny.webp",
+    drizzle: "/assets/images/icon-drizzle.webp",
+    fog: "/assets/images/icon-fog.webp",
+    overcast: "/assets/images/icon-overcast.webp",
+    partly: "/assets/images/icon-partly-cloudy.webp",
+    rain: "/assets/images/icon-rain.webp",
+    snow: "/assets/images/icon-snow.webp",
+    storm: "/assets/images/icon-storm.webp"
 };
 
 function getWeatherIcon(weatherCode) {
